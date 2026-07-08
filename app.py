@@ -8,13 +8,23 @@ while True:
  opcao = input("Escolha uma opcao: ")
 
  if opcao == "1":
-    print("Opcao de Cadastrar Cliente selecionada.")
+    print("Cadastrar Cliente")
+    codigo = input("Digite o codigo do cliente: ")
+    nome = input("Digite o nome do cliente: ")
+    print (f"Cliente {codigo} - {nome} cadastrado com sucesso!")
  elif opcao == "2":
-        print("Opcao de Listar Clientes selecionada.")
+        print("Listar Clientes")
  elif opcao == "3":
-        print ("Opcao de Alterar Clientes selecionados")
+        print ("Alterar Clientes")
+        codigo = input("Digite o codigo do cliente que deseja alterar: ")
+        nome=   input("Digite o novo nome do cliente: ")
+        print(f"Cliente {codigo} - {nome} alterado com sucesso!")
+
  elif opcao == "4":
-        print("Opcao de Remover clientes selecionada")
+        print("Remover cliente")
+        codigo = input("Digite o codigo do cliente que deseja remover: ")
+        print (f"Cliente {codigo} removido com sucesso!")
+        
  elif opcao == "5":
         print("Saindo do sistema. See Ya!")
         break
