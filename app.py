@@ -1,3 +1,5 @@
+clientes = []
+
 while True:
  print("\nMenu Inicial:")
  print("1.Cadastrar Cliente")
@@ -12,21 +14,61 @@ while True:
     codigo = input("Digite o codigo do cliente: ")
     nome = input("Digite o nome do cliente: ")
     print (f"Cliente {codigo} - {nome} cadastrado com sucesso!")
+    
+    #Verificacao para evitar codigos duplicados
+    existe = False
+    for cliente in clientes:
+          if cliente["codigo"] == codigo:
+                existe = True
+                break
+          if existe:
+                print(f"Erro: Cliente com codigo {codigo} ja existe!")
+          else:
+                nome = input("Digite o nome do cliente: ")
+                cliente = {"codigo": codigo, "nome": nome}
+                clientes.append(cliente)
+                print(f"Cliente {codigo} - {nome} cadastrado com sucesso!")
  elif opcao == "2":
         print("Listar Clientes")
+        if not cliente:
+            print("Nenhum cliente cadastrado.")
+        else:
+              for cliente in clientes:
+                    print(f"Codigo: {cliente['codigo']}, Nome: {cliente['nome']}")
  elif opcao == "3":
         print ("Alterar Clientes")
         codigo = input("Digite o codigo do cliente que deseja alterar: ")
-        nome=   input("Digite o novo nome do cliente: ")
-        print(f"Cliente {codigo} - {nome} alterado com sucesso!")
 
- elif opcao == "4":
+        cliente_encontrado = None 
+        for cliente in clientes:
+              if cliente["codigo"] == codigo:
+                    cliente_encontrado = cliente
+                    break
+
+        if cliente_encontrado:
+              nome = input("Digite o novo nome do cliente: ")
+              cliente_encontrado["nome"] = nome
+              print(f"Cliente {codigo} - {nome} alterado com sucesso!")
+        else:
+              print(f"Cliente com codigo {codigo} nao encontrado.")
+
+    elif opcao == "4":
         print("Remover cliente")
         codigo = input("Digite o codigo do cliente que deseja remover: ")
-        print (f"Cliente {codigo} removido com sucesso!")
         
- elif opcao == "5":
+        cliente_encontrado = None
+        for cliente in clientes:
+              if cliente["codigo"] == codigo:
+                    cliente_encontrado = cliente
+                    break
+        if cliente_encontrado:
+              clientes.remove(cliente_encontrado)
+              print(f"Cliente {codigo} - {cliente_encontrado['nome']} removido com sucesso!")
+        else:
+              print(f"Cliente com codigo {codigo} nao encontrado.")
+
+              elif opcao == "5":
         print("Saindo do sistema. See Ya!")
         break
- else:
+    else:
         print("A Opcao escolhida nao existe. Por favor, tente novamente.")
