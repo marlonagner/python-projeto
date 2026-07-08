@@ -28,13 +28,15 @@ while True:
                 cliente = {"codigo": codigo, "nome": nome}
                 clientes.append(cliente)
                 print(f"Cliente {codigo} - {nome} cadastrado com sucesso!")
+                
  elif opcao == "2":
         print("Listar Clientes")
-        if not cliente:
+        if not clientes:
             print("Nenhum cliente cadastrado.")
         else:
               for cliente in clientes:
                     print(f"Codigo: {cliente['codigo']}, Nome: {cliente['nome']}")
+
  elif opcao == "3":
         print ("Alterar Clientes")
         codigo = input("Digite o codigo do cliente que deseja alterar: ")
@@ -52,7 +54,7 @@ while True:
         else:
               print(f"Cliente com codigo {codigo} nao encontrado.")
 
-    elif opcao == "4":
+ elif opcao == "4":
         print("Remover cliente")
         codigo = input("Digite o codigo do cliente que deseja remover: ")
         
@@ -67,8 +69,8 @@ while True:
         else:
               print(f"Cliente com codigo {codigo} nao encontrado.")
 
-              elif opcao == "5":
+ elif opcao == "5":
         print("Saindo do sistema. See Ya!")
         break
-    else:
+else:
         print("A Opcao escolhida nao existe. Por favor, tente novamente.")
