@@ -6,13 +6,16 @@ while True:
  print("2. Listar Cliente")
  print("3. Alterar Cliente")
  print("4. Remover Cliente")
- print("5. Sair")
+ print("5. Buscar Cliente Pelo Nome") #Nova Opcao
+ print("6. Sair")
+
  opcao = input("Escolha uma opcao: ")
 
  if opcao == "1":
     print("Cadastrar Cliente")
     codigo = input("Digite o codigo do cliente: ")
     nome = input("Digite o nome do cliente: ")
+
     print (f"Cliente {codigo} - {nome} cadastrado com sucesso!")
     
     #Verificacao para evitar codigos duplicados
@@ -36,6 +39,8 @@ while True:
         else:
               for cliente in clientes:
                     print(f"Codigo: {cliente['codigo']}, Nome: {cliente['nome']}")
+
+
 
  elif opcao == "3":
         print ("Alterar Clientes")
@@ -70,7 +75,21 @@ while True:
               print(f"Cliente com codigo {codigo} nao encontrado.")
 
  elif opcao == "5":
+        buscar = input("Digiete o código do nome do cliente:")
+
+        cliente_encontrado = None
+        for cliente in clientes:
+                  if cliente["codigo"] == buscar or cliente["nome"] == buscar:
+                        cliente_encontrado = cliente
+                        break
+
+        if cliente_encontrado:
+          print(f"Cliente encontrado: Codigo: {cliente_encontrado['codigo']}, Nome: {cliente_encontrado['nome']}")
+        else:
+         print("Erro: Cliente não encontrado.")
+
+ elif opcao == "6":
         print("Saindo do sistema. See Ya!")
         break
-else:
+ else:
         print("A Opcao escolhida nao existe. Por favor, tente novamente.")
