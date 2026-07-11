@@ -12,3 +12,6 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS clientes (
                nome TEXT NOT NULL
                )
                ''')
+print("Banco de dados e tabela criados com sucesso!")
+#fechar conexao
+conexao.close()

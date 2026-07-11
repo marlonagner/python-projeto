@@ -1,3 +1,8 @@
+import banco
+import funcoes
+
+banco.criar_tabela()
+
 clientes = []
 
 while True:
