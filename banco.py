@@ -15,3 +15,16 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS clientes (
 print("Banco de dados e tabela criados com sucesso!")
 #fechar conexao
 conexao.close()
+
+#criar tabela de endereços
+cursor.execute("""
+               CREATE TABLE IF NOT EXISTS enderecos(
+               id INTEGER PRIMARY KEY AUTOINCREMENT,
+               cliente_codigo TXT,
+               rua TEXT NOT NULL,
+               cidade TEXT NOT NULL,
+               FOREIGN KEY (cliente_codigo) REFERENCES clientes(codigo)
+               )
+               """)
+conexao.commit()
+conexao.close()
