@@ -7,7 +7,7 @@ clientes = []
 
 while True:
  print("\nMenu Inicial:")
- print("1.Cadastrar Cliente")
+ print("1. Cadastrar Cliente")
  print("2. Listar Cliente")
  print("3. Alterar Cliente")
  print("4. Remover Cliente")
