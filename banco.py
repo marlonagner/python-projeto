@@ -1,30 +1,28 @@
 import sqlite3
 
-#Conectar ao banco de dados ou criar caso não exista
+def criar_tabela():
+    conexao = sqlite3.connect("clientes.db")
+    cursor = conexao.cursor()
 
-conexao =sqlite3.connect("clientes.db   ")
-cursor = conexao.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS clientes(
+            codigo TEXT PRIMARY KEY,
+            nome TEXT NOT NULL
+        )
+    """)
 
-# criar tabela de clientes
-cursor.execute('''CREATE TABLE IF NOT EXISTS clientes (
-               id INTEGER PRIMARY KEY AUTOINCREMENT,
-               codigo TEXT UNIQUE NOT NULL,
-               nome TEXT NOT NULL
-               )
-               ''')
-print("Banco de dados e tabela criados com sucesso!")
-#fechar conexao
-conexao.close()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS enderecos(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            cliente_codigo TEXT,
+            rua TEXT,
+            numero TEXT,
+            cidade TEXT,
+            FOREIGN KEY(cliente_codigo) REFERENCES clientes(codigo)
+        )
+    """)
 
-#criar tabela de endereços
-cursor.execute("""
-               CREATE TABLE IF NOT EXISTS enderecos(
-               id INTEGER PRIMARY KEY AUTOINCREMENT,
-               cliente_codigo TXT,
-               rua TEXT NOT NULL,
-               cidade TEXT NOT NULL,
-               FOREIGN KEY (cliente_codigo) REFERENCES clientes(codigo)
-               )
-               """)
-conexao.commit()
-conexao.close()
+    conexao.commit()
+    conexao.close()
+
+    print("Banco de dados e tabelas criados com sucesso!")
